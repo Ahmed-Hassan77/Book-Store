@@ -1,4 +1,4 @@
-﻿# 📚 Book-store Web Application
+﻿# 📚 Book-Store Web Application
 
 This project is a fully functional **Bookstore web application** built using the **ASP.NET Core MVC** framework. It provides users with the ability to browse books by genre, add them to a shopping cart, and proceed to checkout — simulating a real-world online bookstore.
 
