@@ -21,6 +21,9 @@ This project is a fully functional **Bookstore web application** built using the
 - 👤 Admin panel for managing books and inventory
 
 
+##[Watch demo video](https://drive.google.com/file/d/1C-zzGpW46xkpokYlz_0nlTOTqO32Ukak/view?usp=sharing)
+
+
 ## 🚀 Getting Started
 
 1. Clone the repository
