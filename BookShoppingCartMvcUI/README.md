@@ -20,9 +20,6 @@ This project is a fully functional **Bookstore web application** built using the
 - 📦 Stock availability handling
 - 👤 Admin panel for managing books and inventory
 
-## 📸 Screenshots
-
-> *(You can add screenshots here later to visually present the app)*
 
 ## 🚀 Getting Started
 
