@@ -22,10 +22,10 @@ This project is a fully functional **Bookstore web application** built using the
 
 ## ✨ Demo Video
 -[Watch demo video](https://drive.google.com/file/d/1C-zzGpW46xkpokYlz_0nlTOTqO32Ukak/view?usp=sharing)
-try it :https://bookhubb.runasp.net
+- try it :https://bookhubb.runasp.net
 
-ف
-فق
+
+
 
 ## 🚀 Getting Started
 
