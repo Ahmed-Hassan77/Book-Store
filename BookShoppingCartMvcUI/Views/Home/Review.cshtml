@@ -1,0 +1,131 @@
+﻿@model BookShoppingCartMvcUI.Models.IndexVm
+
+@{
+    Layout = "_Layout";
+}
+
+<!-- Testimonials Section -->
+<section id="testimonials" class="testimonials section bg-light py-5">
+    <div class="container text-center mb-4">
+        <h2 class="fw-bold text-primary">Customer Reviews</h2>
+        <hr class="w-25 mx-auto text-secondary" />
+    </div>
+
+    <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <div class="swiper init-swiper" data-speed="600" data-delay="5000"
+             data-breakpoints='{"320": {"slidesPerView": 1, "spaceBetween": 20}, "768": {"slidesPerView": 2, "spaceBetween": 30}, "1200": {"slidesPerView": 3, "spaceBetween": 40}}'>
+            <script type="application/json" class="swiper-config">
+                {
+                    "loop": true,
+                    "speed": 600,
+                    "autoplay": { "delay": 5000 },
+                    "slidesPerView": "auto",
+                    "pagination": {
+                        "el": ".swiper-pagination",
+                        "type": "bullets",
+                        "clickable": true
+                    },
+                    "breakpoints": {
+                        "320": { "slidesPerView": 1, "spaceBetween": 20 },
+                        "768": { "slidesPerView": 2, "spaceBetween": 30 },
+                        "1200": { "slidesPerView": 3, "spaceBetween": 40 }
+                    }
+                }
+            </script>
+            <div class="swiper-wrapper">
+                @foreach (var item in Model.Reviews)
+                {
+                <div class="swiper-slide">
+                    <div class="card h-100 shadow-sm border-0 rounded-3 p-4">
+                        <div class="d-flex align-items-center mb-3">
+                            
+                            <div>
+                                <h5 class="mb-0 fw-bold">@item.Name</h5>
+                                <small class="text-muted">@item.Subject</small>
+                            </div>
+                        </div>
+                        <p class="text-muted fst-italic">
+                            <i class="bi bi-quote-left text-primary me-2"></i>
+                            @item.Description
+                            <i class="bi bi-quote-right text-primary ms-2"></i>
+                        </p>
+                    </div>
+                </div>
+                }
+            </div>
+            <div class="swiper-pagination mt-4"></div>
+        </div>
+    </div>
+</section>
+
+<!-- Review Form Section -->
+<section id="contact" class="contact section py-5">
+    <div class="container text-center mb-4">
+        <h2 class="fw-bold text-primary">Leave a Review</h2>
+        <hr class="w-25 mx-auto text-secondary" />
+    </div>
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+                <form asp-action="SendReview" method="post" asp-controller="Home" class="needs-validation" novalidate>
+                    <div class="row gy-4">
+                        <!-- Name -->
+                        <div class="col-md-6">
+                            <label for="Name" class="form-label visually-hidden">Your Name</label>
+                            <input type="text" id="Name" name="Name" class="form-control" placeholder="Your Name" required>
+                            <div class="invalid-feedback">Please enter your name.</div>
+                        </div>
+
+                        <!-- Email -->
+                        <div class="col-md-6">
+                            <label for="Email" class="form-label visually-hidden">Your Email</label>
+                            <input type="email" class="form-control" id="Email" name="Email" placeholder="Your Email" required>
+                            <div class="invalid-feedback">Please enter a valid email address.</div>
+                        </div>
+
+                        <!-- Subject -->
+                        <div class="col-12">
+                            <label for="Subject" class="form-label visually-hidden">Subject</label>
+                            <input type="text" class="form-control" name="Subject" id="Subject" placeholder="Subject" required>
+                            <div class="invalid-feedback">Please enter a subject.</div>
+                        </div>
+
+                        <!-- Message -->
+                        <div class="col-12">
+                            <label for="Description" class="form-label visually-hidden">Your Review</label>
+                            <textarea class="form-control" name="Description" id="Description" rows="5" placeholder="Your Review" required></textarea>
+                            <div class="invalid-feedback">Please write your review.</div>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <div class="col-12 text-center">
+                            <button type="submit" class="btn btn-primary px-4 py-2 d-inline-flex align-items-center">
+                                <i class="bi bi-send me-2"></i> Submit Review
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    <!-- Bootstrap Form Validation -->
+    <script>
+        (() => {
+            'use strict';
+            const forms = document.querySelectorAll('.needs-validation');
+            Array.from(forms).forEach(form => {
+                form.addEventListener('submit', event => {
+                    if (!form.checkValidity()) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        })();
+    </script>
+}

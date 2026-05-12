@@ -1,0 +1,66 @@
+﻿@page
+@model LoginWithRecoveryCodeModel
+@{
+    ViewData["Title"] = "Recovery Code Verification";
+}
+
+<div class="container d-flex align-items-center justify-content-center min-vh-100">
+    <div class="card shadow-sm border-0 rounded-4 w-100" style="max-width: 500px;">
+        <div class="card-body p-4 p-md-5">
+            <!-- Title -->
+            <h1 class="text-center mb-4 fw-bold">@ViewData["Title"]</h1>
+
+            <!-- Info Alert -->
+            <div class="alert alert-warning d-flex align-items-center mb-4" role="alert">
+                <i class="bi bi-exclamation-triangle-fill me-3 fs-4"></i>
+                <div>
+                    <p class="mb-0">
+                        This login will not be remembered until you provide an authenticator app code at log in or disable 2FA and log in again.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Form -->
+            <form method="post" class="needs-validation" novalidate>
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-3" role="alert"></div>
+
+                <!-- Recovery Code Input -->
+                <div class="form-floating mb-3">
+                    <input asp-for="Input.RecoveryCode"
+                           class="form-control form-control-lg"
+                           autocomplete="off"
+                           placeholder="Recovery Code"
+                           required />
+                    <label asp-for="Input.RecoveryCode" class="form-label visually-hidden">Recovery Code</label>
+                    <div class="invalid-feedback">Please enter your recovery code.</div>
+                    <span asp-validation-for="Input.RecoveryCode" class="text-danger"></span>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="w-100 btn btn-lg btn-primary d-flex align-items-center justify-content-center gap-2">
+                    <i class="bi bi-box-arrow-in-right"></i> Log In
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <!-- Bootstrap Form Validation -->
+    <script>
+        (() => {
+            'use strict';
+            const forms = document.querySelectorAll('.needs-validation');
+            Array.from(forms).forEach(form => {
+                form.addEventListener('submit', event => {
+                    if (!form.checkValidity()) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        })();
+    </script>
+}
